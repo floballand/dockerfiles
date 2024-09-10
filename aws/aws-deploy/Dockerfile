@@ -13,7 +13,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-$CLI_VERSION.zip"
 
 # AWS-SAM-CLI
 FROM debian:bookworm-slim as samcli
-ENV SAM_VERSION=1.53.0
+ENV SAM_VERSION=1.115.0
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update -y --no-install-recommends \
   && apt install -y unzip curl
@@ -23,7 +23,7 @@ RUN curl -L "https://github.com/aws/aws-sam-cli/releases/download/v$SAM_VERSION/
   && rm sam-installation.zip
 
 # AWS FINAL STAGE (NODE + DOCKER)
-FROM python:3.11-slim-bookworm
+FROM python:3.12-slim-bookworm
 
 #ENV SERVERLESS_VERSION=2.57.0
 ENV NODEJS_VERSION=20
